@@ -18,15 +18,19 @@ Pour lancer l'application :
   2. Publieur
 
  Exemple visible via l'adresse http://localhost:8000/artworks
+ 
  Présente également un cas de "champs dynamiques" dans un formulaire.
  
 2. Champ dynamiques de formulaires en fonction de paramètres de BDD (basé sur une notion de collection d'objets)
+ 
  Exemple visible via l'adresse http://localhost:8000/subscriptions
 
 3. Workflow d'enregistrement : validation en fin de formulaire en utilisant les capacités de Symfony
+ 
  Exemple visible via l'adresse http://localhost:8000/deliveries
 
 4. Exemple de création d'un user provider secondaire
 Utilisation de la notion de ChainProvider. Attention : ne gère pas le cas d'un user trouvé mais non valide.
 Pour gérer ce cas là, il faudrait créer un `AuthenticationProviderInterface` personnalisé par exemple.
+ 
  Exemple visible via l'adresse http://localhost:8000/login
