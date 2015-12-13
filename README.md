@@ -30,4 +30,3 @@ Pour lancer l'application :
 Utilisation de la notion de ChainProvider. Attention : ne gère pas le cas d'un user trouvé mais non valide.
 Pour gérer ce cas là, il faudrait créer un `AuthenticationProviderInterface` personnalisé par exemple.
  Exemple visible via l'adresse http://localhost:8000/login
-
