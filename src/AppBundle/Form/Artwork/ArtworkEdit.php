@@ -41,7 +41,7 @@ class ArtworkEdit extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults([
-            'class' => Artwork::class
+            'data_class' => Artwork::class
         ]);
     }
 

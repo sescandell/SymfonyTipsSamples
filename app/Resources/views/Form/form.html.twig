@@ -1,0 +1,8 @@
+{% extends 'form_div_layout.html.twig' %}
+
+{% block image_edit_label %}
+    {%- if required -%}
+        {% set label_attr = label_attr|merge({'class': (label_attr.class|default('') ~ ' required')|trim}) %}
+    {%- endif -%}
+    <label{% for attrname, attrvalue in label_attr %} {{ attrname }}="{{ attrvalue }}"{% endfor %}>{{ form.vars.value.reference.label }}</label>
+{% endblock %}

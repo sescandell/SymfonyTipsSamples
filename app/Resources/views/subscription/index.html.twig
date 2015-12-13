@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div id="wrapper">
+        <div id="container">
+            <div id="welcome">
+                <h1>Liste des inscriptions</h1>
+            </div>
+
+            <a href="{{ path("subscription_add_company") }}">Ajouter une entreprise</a>
+            <a href="{{ path("subscription_add_user") }}">Ajouter un utilisateur</a>
+
+            <ul>
+                {% for subscription in subscriptions %}
+                    <li><a href="{{ path("subscription_show", {id: subscription.id}) }}">{{ subscription }}</a></li>
+                {% else %}
+                    <li>Vide</li>
+                {% endfor %}
+            </ul>
+
+        </div>
+    </div>
+{% endblock %}
+

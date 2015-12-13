@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div id="wrapper">
+        <div id="container">
+            <h1>{{ subscription.title }}</h1>
+            <h2>Fichiers</h2>
+            <ul>
+                {% for image in subscription.images %}
+                    <li>{{ image.reference.label }} => {{ image.filename }}</li>
+                {% else %}
+                    <li>Aucun auteur... impossible !!!</li>
+                {% endfor %}
+            </ul>
+            <ul>
+                <li><a href="{{ path('subscription_edit', {id: subscription.id}) }}">Modifier</a></li>
+                <li><a href="{{ path('subscriptions') }}">Retour à la liste</a></li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}
