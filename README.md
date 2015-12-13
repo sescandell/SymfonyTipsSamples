@@ -23,3 +23,8 @@ Pour lancer l'application :
 2. Champ dynamiques de formulaires en fonction de paramètres de BDD (basé sur une notion de collection d'objets)
  Exemple visible via l'adresse http://localhost:8000/subscriptions
 
+3. Workflow d'enregistrement : validation en fin de formulaire en utilisant les capacités de Symfony
+ Exemple visible via l'adresse http://localhost:8000/deliveries
+
+
+
