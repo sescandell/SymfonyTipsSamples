@@ -1,0 +1,69 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div id="wrapper">
+        <div id="container">
+            {{ form_start(form) }}
+                {{ form_widget(form) }}
+                <input type="submit" value="Valider" class="btn btn-default pull-right" />
+            {{ form_end(form) }}
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        // Autre possibilité pour éviter de faire ceci à la main "à chaque fois" :
+        // redéfinir la méthode de render du form ArtworkEdit
+        function addForm(holder, newLink) {
+            var prototype = holder.data('prototype');
+            var index = holder.data('index');
+            var newForm = prototype.replace(/__name__/g, index);
+
+            holder.data('index', index + 1);
+            var newFormDiv = $('<div></div>').append(newForm);
+            newLink.before(newFormDiv);
+            addFormDeleteLink(newFormDiv);
+        }
+
+        function addFormDeleteLink(formDiv) {
+            var removeFormA = $('<a href="#">Supprimer</a>');
+            formDiv.append(removeFormA);
+
+            removeFormA.on('click', function(e) {
+                e.preventDefault();
+                formDiv.remove();
+            });
+        }
+
+        // Authors
+        var authors = $('#artwork_edit_authors');
+        authors.children('div').each(function() {
+            addFormDeleteLink($(this));
+        });
+        var addAuthorLink = $('<a href="#" class="add-author">Ajouter un auteur</a>');
+        var newAuthorLink = $('<div></div>').append(addAuthorLink);
+
+        authors.append(newAuthorLink);
+        authors.data('index', authors.find(':input[type=text]').length);
+        addAuthorLink.on('click', function(e) {
+            e.preventDefault();
+            addForm(authors, newAuthorLink);
+        });
+
+        // Publishers
+        var publishers = $('#artwork_edit_publishers');
+        publishers.children('div').each(function() {
+            addFormDeleteLink($(this));
+        });
+        var addPublisherLink = $('<a href="#" class="add-author">Ajouter un publieur</a>');
+        var newPublisherLink = $('<div></div>').append(addPublisherLink);
+
+        publishers.append(newPublisherLink);
+        publishers.data('index', publishers.find(':input[type=text]').length);
+        addPublisherLink.on('click', function(e) {
+            e.preventDefault();
+            addForm(publishers, newPublisherLink);
+        });
+    </script>
+{% endblock %}

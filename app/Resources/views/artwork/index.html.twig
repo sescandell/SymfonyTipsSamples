@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div id="wrapper">
+        <div id="container">
+            <div id="welcome">
+                <h1>Oeuvres</h1>
+            </div>
+
+            <a href="{{ path("artwork_add") }}">Ajouter une oeuvre</a>
+
+            <ul>
+                {% for artwork in artworks %}
+                    <li><a href="{{ path("artwork_show", {id: artwork.id}) }}">{{ artwork }}</a></li>
+                {% else %}
+                    <li>Vide</li>
+                {% endfor %}
+            </ul>
+
+        </div>
+    </div>
+{% endblock %}
+
