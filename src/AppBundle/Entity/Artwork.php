@@ -44,6 +44,7 @@ class Artwork
      *
      * @ORM\OneToMany(targetEntity="Participant", mappedBy="artwork", cascade={"persist"})
      * @Assert\Count(min=2)
+     * @Assert\Valid()
      */
     private $participants;
 

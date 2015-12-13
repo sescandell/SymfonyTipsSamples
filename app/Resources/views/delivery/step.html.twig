@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div id="wrapper">
+        <div id="container">
+            <h1>Étape {{ stepNumber }}</h1>
+            {% if (3 == stepNumber) %}
+                {% if (errors | length) %}
+                    <ul>
+                    {% for error in errors %}
+                        <li>{{ error.propertyPath }} - {{ error.message }}</li>
+                    {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endif %}
+            {{ form_start(form, {'attr': {'novalidate': ''}}) }}
+                {{ form_widget(form) }}
+                <input type="submit" value="Valider" class="btn btn-default pull-right" />
+            {{ form_end(form) }}
+        </div>
+    </div>
+{% endblock %}

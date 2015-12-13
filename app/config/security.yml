@@ -1,11 +1,12 @@
 # To get started with security, check out the documentation:
 # http://symfony.com/doc/current/book/security.html
 security:
-
+    encoders:
+        FOS\UserBundle\Model\UserInterface: bcrypt
     # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
     providers:
-        in_memory:
-            memory: ~
+        app_user:
+            id: app_user.user_provider
 
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
@@ -14,11 +15,13 @@ security:
             security: false
 
         main:
+            pattern: ^/
+            form_login:
+                provider: app_user
+                csrf_provider: form.csrf_provider
+
+            logout:       true
             anonymous: ~
-            # activate different ways to authenticate
 
-            # http_basic: ~
-            # http://symfony.com/doc/current/book/security.html#a-configuring-how-your-users-will-authenticate
-
-            # form_login: ~
-            # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
+    access_control:
+        - { path: ^/secured, role: ROLE_USER }

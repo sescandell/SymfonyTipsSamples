@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div id="wrapper">
+        <div id="container">
+            <div id="welcome">
+                <h1>Livraisons</h1>
+            </div>
+
+            <a href="{{ path("delivery_step1") }}">Nouvelle livraison</a>
+
+            <ul>
+                {% for delivery in deliveries %}
+                    <li>{{ delivery }}</li>
+                {% else %}
+                    <li>Vide</li>
+                {% endfor %}
+            </ul>
+
+        </div>
+    </div>
+{% endblock %}
+
